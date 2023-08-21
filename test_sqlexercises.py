@@ -1,3 +1,5 @@
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 import pytest
 from selenium import webdriver
@@ -6,9 +8,8 @@ from selenium.webdriver.common.by import By
 
 
 
-from webdriver_manager.chrome import ChromeDriverManager
-
-driver = webdriver.Chrome(ChromeDriverManager().install())
+service=Service(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=service)
 
 def test_case1():
     driver.get("https://www.w3schools.com/sql/exercise.asp?filename=exercise_select1")
